@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +26,7 @@ public class BatchController {
     @Autowired
     private BatchRepository batches;
     
+    @CrossOrigin
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Batches> create(@RequestBody Batches batch) {
 
@@ -34,6 +36,7 @@ public class BatchController {
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
     
+    @CrossOrigin
     @GetMapping(path = "/batchDetails", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Batches>> getBatches() {
         System.out.println("listing all batches...");
