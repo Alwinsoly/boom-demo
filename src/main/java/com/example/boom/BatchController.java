@@ -26,23 +26,23 @@ public class BatchController {
     @Autowired
     private BatchRepository batches;
     
-    @CrossOrigin
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Batches> create(@RequestBody Batches batch) {
-
-        System.out.println("add/update " + batch);
-
-        Batches saved = batches.save(batch);
-        return new ResponseEntity<>(saved, HttpStatus.CREATED);
-    }
-    
+//    @CrossOrigin
+//    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<Batches> create(@RequestBody Batches batch) {
+//
+//        System.out.println("add/update " + batch);
+//
+//        Batches saved = batches.save(batch);
+//        return new ResponseEntity<>(saved, HttpStatus.CREATED);
+//    }
+//    
     @CrossOrigin
     @GetMapping(path = "/batchDetails", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Batches>> getBatches() {
+    public ResponseEntity<List<Test>> getBatches() {
         System.out.println("listing all batches...");
 
-        List<Batches> result = new ArrayList<>();
+        List<Test> result = new ArrayList<>();
         batches.findAll().iterator().forEachRemaining(result::add);
-        return new ResponseEntity<List<Batches>>(result, HttpStatus.OK);
+        return new ResponseEntity<List<Test>>(result, HttpStatus.OK);
     }
 }
