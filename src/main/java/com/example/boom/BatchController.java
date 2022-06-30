@@ -26,6 +26,9 @@ public class BatchController {
     @Autowired
     private BatchRepository batches;
     
+    @Autowired
+    private scheduleRepository graph;
+    
 //    @CrossOrigin
 //    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 //    public ResponseEntity<Batches> create(@RequestBody Batches batch) {
@@ -44,5 +47,15 @@ public class BatchController {
         List<Test> result = new ArrayList<>();
         batches.findAll().iterator().forEachRemaining(result::add);
         return new ResponseEntity<List<Test>>(result, HttpStatus.OK);
+    }
+    
+    @CrossOrigin
+    @GetMapping(path = "/barGraph", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<BatchGraph>> getGraph() {
+        System.out.println("listing all graphData...");
+
+        List<BatchGraph> result = new ArrayList<>();
+        graph.findAll().iterator().forEachRemaining(result::add);
+        return new ResponseEntity<List<BatchGraph>>(result, HttpStatus.OK);
     }
 }
