@@ -10,11 +10,11 @@ public class Test {
 	
 	 @Id
 	    @PartitionKey
-	    private String dom;
+	    private String batchNumber;
 	    private String deltaBatch;
 	    private String process;
 	    private String status;
-	    private String batchNumber;
+	    private String dom;
 	    private String batchCount;
 	    private String success;
 	    private String failed;
